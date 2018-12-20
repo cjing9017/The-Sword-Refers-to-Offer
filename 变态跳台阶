@@ -1,0 +1,16 @@
+public class Solution {
+    public int JumpFloorII(int target) {
+        int[] table = new int[target + 1];
+        table[1] = 1;
+        table[0] = 1;
+        return countJump(table, target);
+    }
+    
+    private int countJump(int[] table, int target) {
+        if (table[target] > 0) return table[target];
+        for (int i = 1; i <= target; i++) {
+            table[target] += countJump(table, target - i);
+        }
+        return table[target];
+    }
+}

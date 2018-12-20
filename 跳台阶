@@ -1,0 +1,23 @@
+public class Solution {
+    public int JumpFloor(int target) {
+        if (target == 1) return 1;
+        if (target == 2) return 2;
+        return JumpFloor(target - 1) + JumpFloor(target - 2);
+    }
+}
+
+public class Solution {
+    public int JumpFloor(int target) {
+        int[] table = new int[target + 2];
+        table[1] = 1;
+        table[2] = 2;
+        return countJump(table, target);
+    }
+    
+    private int countJump(int[] table, int target) {
+        if (table[target] > 0) return table[target];
+        table[target] = countJump(table, target - 1) + 
+            countJump(table, target - 2);
+        return table[target];
+    }
+}
