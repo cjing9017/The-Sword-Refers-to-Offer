@@ -1,0 +1,30 @@
+/**
+运行时间：26ms
+占用内存：9556k
+**/
+
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Solution {
+    public ListNode FindKthToTail(ListNode head,int k) {
+        if (head == null || k == 0) return null;
+        ListNode root = head;
+        ListNode rootNextK = head;
+        while (k-- > 1) {
+            rootNextK = rootNextK.next;
+            if (rootNextK == null) return null;
+        }
+        while (rootNextK.next != null) {
+            root = root.next;
+            rootNextK = rootNextK.next;
+        }
+        return root;
+    }
+}

@@ -1,0 +1,28 @@
+/*
+运行时间：22ms
+占用内存：9540k
+*/
+
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Solution {
+    public ListNode ReverseList(ListNode head) {
+        if (head == null) return head;
+        ListNode pre = null;
+        while (head.next != null) {
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        head.next = pre;
+        return head;
+    }
+}

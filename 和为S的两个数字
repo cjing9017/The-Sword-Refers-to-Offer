@@ -1,0 +1,28 @@
+/**
+运行时间：21ms
+占用内存：9160k
+*/
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class Solution {
+    public ArrayList<Integer> FindNumbersWithSum(int [] array,int sum) {
+        HashSet<Integer> nums = new HashSet<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int x: array) {
+            int diff = sum - x;
+            if (nums.contains(diff)) {
+                if (result.size() == 0) {
+                    result.add(Math.min(x, diff));
+                    result.add(Math.max(x, diff));
+                } else if (x * diff < result.get(0) * result.get(1)){
+                    result.set(0, Math.min(x, diff));
+                    result.set(1, Math.max(x, diff));
+                }
+            }
+            nums.add(x);
+        }
+        return result;
+    }
+}

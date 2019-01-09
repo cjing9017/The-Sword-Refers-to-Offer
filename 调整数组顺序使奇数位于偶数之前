@@ -1,0 +1,21 @@
+/**
+运行时间：18ms
+占用内存：9476k
+**/
+
+public class Solution {
+    public void reOrderArray(int [] array) {
+        int oddCnt = 0;
+        while (true) {
+            int index = oddCnt;
+            while (index < array.length && array[index] % 2 == 0) index++;
+            if (index >= array.length) break;
+            int temp = array[index];
+            for (int i = index; i > oddCnt; i--) {
+                array[i] = array[i - 1];
+            }
+            array[oddCnt] = temp;
+            oddCnt++;
+        }
+    }
+}

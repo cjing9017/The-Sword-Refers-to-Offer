@@ -1,0 +1,19 @@
+/**
+运行时间：19ms
+占用内存：9536k
+*/
+
+//num1,num2分别为长度为1的数组。传出参数
+//将num1[0],num2[0]设置为返回结果
+public class Solution {
+    public void FindNumsAppearOnce(int [] array,int num1[] , int num2[]) {
+        int twoNum = 0;
+        for (int x: array) twoNum ^= x;
+        int indexOne = 0;
+        while (((twoNum >> indexOne) & 0x01) == 0) indexOne++;
+        for (int x: array) {
+            if (((x >> indexOne) & 0x01) == 0) num1[0] ^= x;
+            else num2[0] ^= x;
+        }
+    }
+}

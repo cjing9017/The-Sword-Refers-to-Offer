@@ -1,0 +1,16 @@
+/**
+运行时间：46ms
+占用内存：10488k
+**/
+
+public class Solution {
+    public double Power(double base, int exponent) {
+        int result = 1;
+        boolean symbol = exponent >= 0 ? true : false;
+        exponent = exponent >= 0 ? exponent : -1 * exponent;
+        while (exponent-- > 0) {
+            result *= base;
+        }
+        return symbol ? result : 1.0 / result;
+    }
+}
